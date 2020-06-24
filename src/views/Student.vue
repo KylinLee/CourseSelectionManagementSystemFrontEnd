@@ -1,7 +1,7 @@
 <template>
     <el-container id="app">
         <el-header>
-            学生选课系统
+            <h1>学生选课系统</h1>
         </el-header>
         <el-container>
             <el-aside width="240px">
@@ -18,22 +18,10 @@
                         <el-menu-item-group title="退课">
                             <el-menu-item index="/student/unselect_course">退课</el-menu-item>
                         </el-menu-item-group>
-                        <el-submenu index="1-4">
-                            <span slot="title">选项4</span>
-                            <el-menu-item index="1-4-1">选项1</el-menu-item>
-                        </el-submenu>
                     </el-submenu>
-                    <el-menu-item index="2">
+                    <el-menu-item index="/student/profile">
                         <i class="el-icon-menu"></i>
-                        <span slot="title">导航二</span>
-                    </el-menu-item>
-                    <el-menu-item index="3" disabled>
-                        <i class="el-icon-document"></i>
-                        <span slot="title">导航三</span>
-                    </el-menu-item>
-                    <el-menu-item index="4">
-                        <i class="el-icon-setting"></i>
-                        <span slot="title">导航四</span>
+                        <span slot="title">修改个人信息</span>
                     </el-menu-item>
                 </el-menu>
             </el-aside>

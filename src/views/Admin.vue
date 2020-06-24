@@ -1,7 +1,7 @@
 <template>
     <el-container id="app">
         <el-header>
-            选课管理系统
+            <h1>选课管理系统</h1>
         </el-header>
         <el-container>
             <el-aside width="240px">

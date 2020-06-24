@@ -51,6 +51,16 @@
                 align="center"
                 header-align="center">
             </el-table-column>
+            <el-table-column
+                header-align="center"
+                align="center"
+                label="退课"
+            >
+                <template slot-scope="scope">
+                    <el-button type="danger" size="mini" @click="unselectCourse(scope.$index, scope.row)">退课
+                    </el-button>
+                </template>
+            </el-table-column>
         </el-table>
     </div>
 </template>
@@ -78,6 +88,37 @@
                         courseName
                     }
             }`
+        },
+        methods: {
+            unselectCourse(index, row) {
+                this.$apollo.mutate({
+                    mutation: gql`mutation($courseId: String) {
+                        unSelectCourse(courseId: $courseId)
+                    } `,
+                    variables: {
+                        courseId: row.courseId
+                    }
+                }).then((res) => {
+                    console.log(res.data.unselectCourse);
+                    if (res.data.unSelectCourse === row.courseId) {
+                        this.$message({
+                            message: "退课成功！",
+                            type: "success"
+                        });
+                        this.personalCourses.splice(index, 1);
+                    } else {
+                        this.$message({
+                            massage: "退课失败！",
+                            type: "error"
+                        })
+                    }
+                }).catch(() => {
+                    this.$message({
+                        massage: "退课失败！",
+                        type: "error"
+                    })
+                })
+            }
         }
     }
 </script>

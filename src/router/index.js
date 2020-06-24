@@ -1,5 +1,5 @@
-import Vue from "vue"
-import VueRouter from "vue-router"
+import Vue from "vue";
+import VueRouter from "vue-router";
 import Admin from "../views/Admin";
 import CourseForm from "../components/CourseForm";
 import SelectCourse from "../components/SelectCourse";
@@ -8,8 +8,12 @@ import AdminCourseList from "../components/AdminCourseList";
 import TeacherList from "../components/TeacherList";
 import StudentList from "../components/StudentList";
 import UnselectCourse from "../components/UnselectCourse";
+import StudentForm from "../components/StudentForm";
+import TeacherForm from "../components/TeacherForm";
+import Teacher from "../views/Teacher"
+import TeacherCourseList from "../components/TeacherCourseList";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -36,6 +40,16 @@ const routes = [
                 path: "all_student",
                 name: "AllStudent",
                 component: StudentList
+            },
+            {
+                path: "add_student",
+                name: "AddStudent",
+                component: StudentForm
+            },
+            {
+                path: "add_teacher",
+                name: "AddTeacher",
+                component: TeacherForm
             }
         ]
     },
@@ -53,13 +67,35 @@ const routes = [
                 path: "unselect_course",
                 name: "UnselectCourse",
                 component: UnselectCourse
+            },
+            {
+                path: "profile",
+                name: "Profile",
+                component: StudentForm
+            }
+        ]
+    },
+    {
+        path: "/teacher",
+        name: "Teacher",
+        component: Teacher,
+        children: [
+            {
+                path: "profile",
+                name:"Profile",
+                component: TeacherForm
+            },
+            {
+                path: "teach_course",
+                name: "TeachCourse",
+                component: TeacherCourseList
             }
         ]
     }
-]
+];
 
 const router = new VueRouter({
     routes
-})
+});
 
-export default router
+export default router;
